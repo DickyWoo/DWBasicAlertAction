@@ -22,16 +22,21 @@
 }
 
 - (IBAction)alertButtonClick:(id)sender {
+    
     [DWBasicAlertAction showAlertWithTitle:@"Alert" message:@"DWBasicAlertAction" cancelButtonTitle:@"cancel" otherButtonTitles:@[@"item1",@"item2",@"item3",@"item4",@"item5",@"item6"]  chooseBlock:^(NSInteger buttonIdx) {
         NSLog(@"click buttonIdx:%ld",buttonIdx);
     }];
+    
 }
 
 - (IBAction)actionSheetButtonClick:(id)sender {
+    
     [DWBasicAlertAction showActionSheetWithTitle:@"ActionSheet" message:@"DWBasicAlertAction" cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Destrutive" otherButtonTitles:@[@"item1",@"item2",@"item3",@"item4",@"item5",@"item6"] chooseBlock:^(NSInteger buttonIdx) {
         NSLog(@"click buttonIdx:%ld",buttonIdx);
     }];
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
