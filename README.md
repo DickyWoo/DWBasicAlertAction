@@ -12,3 +12,23 @@
 	NSLog(@"click buttonIdx:%ld",buttonIdx);
 }];
 ```
+
+## Installation
+
+Latest version: **1.0.1**
+
+```
+pod search DWBasicAlertAction
+```
+If you cannot search out the latest version, try:  
+
+```
+pod setup
+```
+
+## Release Notes
+
+We recommend to use the latest release in cocoapods.
+
+- 1.0.1
+support for cocoapods
