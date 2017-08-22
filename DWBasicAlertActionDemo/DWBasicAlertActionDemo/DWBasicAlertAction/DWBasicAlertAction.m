@@ -126,21 +126,23 @@
 
 //执行跳转UIAlertController
 + (void)presentAlertController:(UIAlertController *)alertController {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        //presentViewController的时候往往会占用较多资源，所以编译器默认放在后台处理
-        //就导致有时候presentViewController所需时间过长，例如点击cell且selectionStyle为UITableViewCellSelectionStyleNone时，该过程就可能需要大概五六秒时间
-        //为解决这个问题，故将该操作移到主线程中进行
-        [[DWBasicAlertAction getPresentViewController] presentViewController:alertController animated:YES completion:^{
-        }];
-    });
+    UIViewController *presentViewController = [DWBasicAlertAction getPresentViewController];
+    if ([presentViewController isKindOfClass:[UIAlertController class]]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [DWBasicAlertAction presentAlertController:alertController];
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //presentViewController的时候往往会占用较多资源，所以编译器默认放在后台处理
+            //就导致有时候presentViewController所需时间过长，例如点击cell且selectionStyle为UITableViewCellSelectionStyleNone时，该过程就可能需要大概五六秒时间
+            //为解决这个问题，故将该操作移到主线程中进行
+            [presentViewController presentViewController:alertController animated:YES completion:nil];
+        });
+    }
 }
 
 //获取用来跳转UIAlertController的控制器
 + (UIViewController *)getPresentViewController {
-    /* 不能使用[[[UIApplication sharedApplication] keyWindow] rootViewController]去获取rootViewController
-    因为UIAlertController的出现，是生成了一个新的window，然后添加在界面上
-    这个时候获取到的keyWindow就是UIAlertControllerShimPresenterWindow
-    获取到的rootViewController就会是UIApplicationRotationFollowingController */
     UIViewController *topController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
     
     //  Getting topMost ViewController
