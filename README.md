@@ -15,7 +15,7 @@
 
 ## Installation
 
-Latest version: **1.0.1**
+Latest version: **1.0.2**
 
 ```
 pod search DWBasicAlertAction
@@ -29,6 +29,9 @@ pod setup
 ## Release Notes
 
 We recommend to use the latest release in cocoapods.
+
+- 1.0.2
+修复在弹窗代理中调用无法生效的BUG
 
 - 1.0.1
 support for cocoapods
