@@ -8,7 +8,7 @@
 //  弹窗显示工具
 
 #import "DWBasicAlertAction.h"
-#import "AppDelegate.h"
+//#import "AppDelegate.h"
 #import <objc/runtime.h>
 
 @implementation DWBasicAlertAction
@@ -142,9 +142,10 @@
     因为UIAlertController的出现，是生成了一个新的window，然后添加在界面上
     这个时候获取到的keyWindow就是UIAlertControllerShimPresenterWindow
     获取到的rootViewController就会是UIApplicationRotationFollowingController */
-    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UIViewController *topController = appdelegate.window.rootViewController;
-
+//    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    UIViewController *topController = appdelegate.window.rootViewController;
+    UIViewController *topController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    
     //  Getting topMost ViewController
     while ([topController presentedViewController])	{
         topController = [topController presentedViewController];
