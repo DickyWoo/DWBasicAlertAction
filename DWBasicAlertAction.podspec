@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DWBasicAlertAction"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "A Library for iOS to use for show alert, automatic choose UIAlert And UIActionSheet below iOS8.0, otheriwse choose UIAlertViewController."
   s.description  = "A Library for iOS to use for show alert, automatic choose UIAlert And UIActionSheet below iOS8.0, otheriwse choose UIAlertViewController.系统弹窗，根据版本自动选择调用UIAlertView、UIActionSheet还是UIAlertController."
   s.homepage     = "https://github.com/DickyWoo/DWBasicAlertAction"
